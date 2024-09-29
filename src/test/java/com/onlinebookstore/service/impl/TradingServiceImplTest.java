@@ -84,7 +84,7 @@ public class TradingServiceImplTest {
 
         Optional<ShoppingCart> cart201 = Optional.of(new ShoppingCart(201, 101, 11.0, new Date(),null));
         Optional<ShoppingCart> cart202 = Optional.of(new ShoppingCart(202, 102, 12.0, new Date(),null));
-        // 这本书购物车中加购的书已经过期，加购的商品ID已经无效，不能进行账单结算。
+        // The book added to the shopping cart has expired, this book is invalid, so it cannot be settled.
         Optional<ShoppingCart> cart203 = Optional.of(new ShoppingCart(203, 103333, 13.0, new Date(),null));
         Mockito.when(shoppingCartRepository.findById(201)).thenReturn(cart201);
         Mockito.when(shoppingCartRepository.findById(202)).thenReturn(cart202);
@@ -123,7 +123,7 @@ public class TradingServiceImplTest {
         Mockito.when(bookRepository.findById(102)).thenReturn(book102);
         Mockito.when(bookRepository.findById(103)).thenReturn(book103);
 
-        // 所有购物车中加购的书已经过期，加购的商品ID已经无效，不能进行账单结算。
+        // All the books added to the shopping cart has expired, so they shouldn't be settled.
         Optional<ShoppingCart> cart201 = Optional.of(new ShoppingCart(201, 101333, 11.0, new Date(),null));
         Optional<ShoppingCart> cart202 = Optional.of(new ShoppingCart(202, 102333, 12.0, new Date(),null));
         Optional<ShoppingCart> cart203 = Optional.of(new ShoppingCart(203, 103333, 13.0, new Date(),null));
